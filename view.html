@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <style>
+        body{
+            background-color: beige;
+        }
+    </style>
+    <title>메일 사인 작성</title>
+</head>
+<body>
+<header>
+    <div style="height: 40px;"></div>    
+</header>
+<label for="preview" style="border: solid gray 1px; background-color: gray;color: white;">미리보기</label>
+<div style="height: 260px; border: solid gray 1px; padding-left: 20px; background-color: white;">
+    <div id="preview"></div>
+</div>
+
+<fieldset>
+    <legend>첫번째 내용</legend>
+    <ul>
+        <li>
+            <label for="firstContent">내용 입력 : </label>
+            <textarea type="text" id="firstContent" rows="1" onkeypress="enterCheck(1)"> </textarea>
+        </li>
+        <li>
+            <label for="firstImg">이미지 주소 입력 : </label>
+            <input type="text" id="firstImg">
+        </li>
+        <li>
+            <label for="firstUrl">URL 입력 : </label>
+            <input type="text" id="firstUrl"> <span style="font-size: 12px;">작성하실 때 'http://' 를 반드시 넣어 주세요.</span>
+        </li>
+    </ul>
+</fieldset>
+<fieldset>
+    <legend>두번째 내용</legend>
+    <ul>
+        <li>
+            <label for="secondContent">내용 입력 : </label>
+            <textarea type="text" id="secondContent" rows="1" onkeypress="enterCheck(2)"> </textarea>
+        </li>
+        <li>
+            <label for="secondImg">이미지 주소 입력 : </label>
+            <input type="text" id="secondImg">
+        </li>
+        <li>
+            <label for="secondUrl">URL 입력 : </label>
+            <input type="text" id="secondUrl"> <span style="font-size: 12px;">작성하실 때 'http://' 를 반드시 넣어 주세요.</span>
+        </li>
+    </ul>
+</fieldset>
+<fieldset>
+    <legend>세번째 내용</legend>
+    <ul>
+        <li>
+            <label for="thirdContent">내용 입력 : </label>
+            <textarea type="text" id="thirdContent" rows="1" onkeypress="enterCheck(3)"> </textarea>
+        </li>
+        <li>
+            <label for="thirdImg">이미지 주소 입력 : </label>
+            <input type="text" id="thirdImg">
+        </li>
+        <li>
+            <label for="thirdUrl">URL 입력 : </label>
+            <input type="text" id="thirdUrl"> <span style="font-size: 12px;">작성하실 때 'http://' 를 반드시 넣어 주세요.</span>
+        </li>
+    </ul>
+</fieldset>
+<fieldset>
+    <legend>네번째 내용</legend>
+    <ul>
+        <li>
+            <label for="fourthContent">내용 입력 : </label>
+            <textarea type="text" id="fourthContent" rows="1" onkeypress="enterCheck(4)"> </textarea>
+        </li>
+        <li>
+            <label for="fourthImg">이미지 주소 입력 : </label>
+            <input type="text" id="fourthImg">
+        </li>
+        <li>
+            <label for="fourthUrl">URL 입력 : </label>
+            <input type="text" id="fourthUrl"> <span style="font-size: 12px;">작성하실 때 'http://' 를 반드시 넣어 주세요.</span>
+        </li>
+    </ul>
+</fieldset>
+<div>
+    <button onclick="previewHtml()">미리보기</button>
+    <button onclick="result()">출력하기</button>
+</div>
+<fieldset>
+    <legend for="resultHtml">HTML 복사하기</legend>
+    <textarea name="" id="resultHtml" cols="30" rows="10"></textarea> 
+    <button onclick="copyText()">복사</button>
+</fieldset>
+<script>
+
+
+// 작성된 html 미리보기
+function previewHtml(){
+   var fiContent =  $('#firstContent').val();
+   var fiAlt = fiContent; //alt 내용
+   fiContent = fiContent.replaceAll('\n','<br>'); //<br> 넣어주기
+   var fiImg =  $('#firstImg').val();
+   var fiUrl =  $('#firstUrl').val();
+   var seContent =  $('#secondContent').val();
+   var seAlt = seContent; //alt 내용
+   seContent = seContent.replaceAll('\n','<br>');  //<br> 넣어주기
+   var seImg =  $('#secondImg').val();
+   var seUrl =  $('#secondUrl').val();
+   var thContent =  $('#thirdContent').val();
+   var thAlt = thContent; //alt 내용
+   thContent = thContent.replaceAll('\n','<br>')  //<br> 넣어주기
+   var thImg =  $('#thirdImg').val();
+   var thUrl =  $('#thirdUrl').val();
+   var foContent =  $('#fourthContent').val();
+   var foAlt = foContent; //alt 내용
+   foContent = foContent.replaceAll('\n','<br>');  //<br> 넣어주기
+   var foImg =  $('#fourthImg').val();
+   var foUrl =  $('#fourthUrl').val();
+   var str = '<table border="0" cellspacing="0" cellpadding="0" width="100%"> '
+                    +'<tbody><tr><td style="text-align: left"> '
+                    +'<div style="line-height: 0; width: 590px"> '
+                        +'<div style="line-height: 0;">'
+                        +'<img border="0" src="https://i.imgur.com/WGFgiVQ.png" loading="lazy" style="width: 604px; position: relative; left: -7px; top: 22px;">'
+                        +'</div> '
+                        +'<div style="border-bottom: gray 1px solid; border-left: gray 1px solid; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; border-right: gray 1px solid; padding-top: 32.5px"> '
+                        +'<div style="text-align: left; padding-bottom: 0px; margin: auto; width: 695px; overflow: hidden"> '
+                        +'<ul style="padding-bottom: 0px; list-style-type: none; margin: 0px; padding-left:0px; padding-right: 0px; font-family: 돋움; float: left; letter-spacing: 0px; font-size: 11px; padding-top: 0px">'
+                            +'<!-- 이곳이 첫번째 내용 입니다. -->'
+                            +'<li style="width:120px;font-size:11px;list-style-type:none;text-align:center;float:left"> '
+                            +' <a href="'+fiUrl+'" target="_blank" style="font-size:11px;text-decoration:none;" rel="noreferrer noopener"> '
+                                    +'<img src="'+fiImg+'" alt="'+fiAlt+'" style="width:120px;height:90px;border:none" loading="lazy">'
+                                    +'<span style="width:120px;text-align:center;margin-top:7px;font-family:dotum,Helvetica,sans-serif;font-size:11px;color:rgb(83,83,83);letter-spacing:-1px;display:block;line-height:1.5em;">'
+                                        +fiContent
+                                    +'</span>'
+                                +'</a>'
+
+                            +'</li>'
+                            +'<!-- 이곳이 두번째 내용 입니다. -->'
+                            +'<li style="width:120px;font-size:11px;list-style-type:none;text-align:center;float:left;margin-left:22px;"> '
+                                +'<a href="'+seUrl+'" target="_blank" style="font-size:11px;text-decoration:none;" rel="noreferrer noopener"> '
+                                    +'<img src="'+seImg+'" alt="'+seAlt+'" style="width:120px;height:90px;border:none" loading="lazy"> '
+                                    +'<span style="width:120px;text-align:center;margin-top:7px;font-family:dotum,Helvetica,sans-serif;font-size:11px;color:rgb(83,83,83);letter-spacing:-1px;display:block;line-height:1.5em;">'
+                                    +seContent
+                                +' </span>'
+                                +'</a>'
+                            +'</li>'
+                            +'<!-- 이곳이 세번째 내용 입니다. -->'
+                            +'<li style="width:120px;font-size:11px;list-style-type:none;text-align:center;float:left;margin-left:22px;"> '
+                            +' <a href="'+thUrl+'" target="_blank" style="font-size:11px;text-decoration:none;" rel="noreferrer noopener"> '
+                                +' <img src="'+thImg+'" alt="'+thAlt+'" style="width:120px;height:90px;border:none" loading="lazy"> '
+                                    +'<span style="width:120px;text-align:center;margin-top:7px;font-family:dotum,Helvetica,sans-serif;font-size:11px;color:rgb(83,83,83);letter-spacing:-1px;display:block;line-height:1.5em;">'
+                                    +thContent
+                                +'</span>'
+                            +' </a>'
+                        +' </li>'
+                            +'<!-- 이곳이 네번째 내용 입니다. -->'
+                            +'<li style="width:120px;font-size:11px;list-style-type:none;text-align:center;float:left;margin-left:22px;"> '
+                            +' <a href="'+foUrl+'" target="_blank" style="font-size:11px;text-decoration:none;" rel="noreferrer noopener"> '
+                                +' <img src="'+foImg+'" alt="'+foAlt+'" style="width:120px;height:90px;border:none" loading="lazy"> '
+                                    +'<span style="width:120px;text-align:center;margin-top:7px;font-family:dotum,Helvetica,sans-serif;font-size:11px;color:rgb(83,83,83);letter-spacing:-1px;display:block;line-height:1.5em;">'
+                                    +foContent
+                                +'</span>'
+                            +' </a>'
+                        +' </li>'
+                        +'</ul> '
+                        +' </div> '
+                    +' </div> '
+                    +' </div> </td></tr></tbody> '
+                +'</table>';
+
+    $('#preview').html(str);
+    }
+
+// 작성된 html 출력하기
+function result(){
+   var fiContent =  $('#firstContent').val();
+   var fiAlt = fiContent; //alt 내용
+   fiContent = fiContent.replaceAll('\n','<br>'); //<br> 넣어주기
+   var fiImg =  $('#firstImg').val();
+   var fiUrl =  $('#firstUrl').val();
+   var seContent =  $('#secondContent').val();
+   var seAlt = seContent; //alt 내용
+   seContent = seContent.replaceAll('\n','<br>'); //<br> 넣어주기
+   var seImg =  $('#secondImg').val();
+   var seUrl =  $('#secondUrl').val();
+   var thContent =  $('#thirdContent').val();
+   var thAlt = thContent; //alt 내용
+   thContent = thContent.replaceAll('\n','<br>'); //<br> 넣어주기
+   var thImg =  $('#thirdImg').val();
+   var thUrl =  $('#thirdUrl').val();
+   var foContent =  $('#fourthContent').val();
+   var foAlt = foContent; //alt 내용
+   foContent = foContent.replaceAll('\n','<br>'); //<br> 넣어주기
+   var foImg =  $('#fourthImg').val();
+   var foUrl =  $('#fourthUrl').val();
+   var str = '<!DOCTYPE html>'
+                +'<html>'
+                +'<head>'
+                    +'<meta charset="utf-8">'
+                +'</head>'
+                +'<body>'
+                +'<table border="0" cellspacing="0" cellpadding="0" width="100%"> '
+                    +'<tbody><tr><td style="text-align: left"> '
+                    +'<div style="line-height: 0; width: 590px"> '
+                        +'<div style="line-height: 0;">'
+                        +'<img border="0" src="https://i.imgur.com/WGFgiVQ.png" loading="lazy" style="width: 604px; position: relative; left: -7px; top: 22px;">'
+                        +'</div> '
+                        +'<div style="border-bottom: gray 1px solid; border-left: gray 1px solid; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; border-right: gray 1px solid; padding-top: 32.5px"> '
+                        +'<div style="text-align: left; padding-bottom: 0px; margin: auto; width: 695px; overflow: hidden"> '
+                        +'<ul style="padding-bottom: 0px; list-style-type: none; margin: 0px; padding-left:0px; padding-right: 0px; font-family: 돋움; float: left; letter-spacing: 0px; font-size: 11px; padding-top: 0px">'
+                            +'<!-- 이곳이 첫번째 내용 입니다. -->'
+                            +'<li style="width:120px;font-size:11px;list-style-type:none;text-align:center;float:left"> '
+                            +' <a href="'+fiUrl+'" target="_blank" style="font-size:11px;text-decoration:none;" rel="noreferrer noopener"> '
+                                    +'<img src="'+fiImg+'" alt="'+fiAlt+'" style="width:120px;height:90px;border:none" loading="lazy">'
+                                    +'<span style="width:120px;text-align:center;margin-top:7px;font-family:dotum,Helvetica,sans-serif;font-size:11px;color:rgb(83,83,83);letter-spacing:-1px;display:block;line-height:1.5em;">'
+                                        +fiContent
+                                    +'</span>'
+                                +'</a>'
+
+                            +'</li>'
+                            +'<!-- 이곳이 두번째 내용 입니다. -->'
+                            +'<li style="width:120px;font-size:11px;list-style-type:none;text-align:center;float:left;margin-left:22px;"> '
+                                +'<a href="'+seUrl+'" target="_blank" style="font-size:11px;text-decoration:none;" rel="noreferrer noopener"> '
+                                    +'<img src="'+seImg+'" alt="'+seAlt+'" style="width:120px;height:90px;border:none" loading="lazy"> '
+                                    +'<span style="width:120px;text-align:center;margin-top:7px;font-family:dotum,Helvetica,sans-serif;font-size:11px;color:rgb(83,83,83);letter-spacing:-1px;display:block;line-height:1.5em;">'
+                                    +seContent
+                                +' </span>'
+                                +'</a>'
+                            +'</li>'
+                            +'<!-- 이곳이 세번째 내용 입니다. -->'
+                            +'<li style="width:120px;font-size:11px;list-style-type:none;text-align:center;float:left;margin-left:22px;"> '
+                            +' <a href="'+thUrl+'" target="_blank" style="font-size:11px;text-decoration:none;" rel="noreferrer noopener"> '
+                                +' <img src="'+thImg+'" alt="'+thAlt+'" style="width:120px;height:90px;border:none" loading="lazy"> '
+                                    +'<span style="width:120px;text-align:center;margin-top:7px;font-family:dotum,Helvetica,sans-serif;font-size:11px;color:rgb(83,83,83);letter-spacing:-1px;display:block;line-height:1.5em;">'
+                                    +thContent
+                                +'</span>'
+                            +' </a>'
+                        +' </li>'
+                            +'<!-- 이곳이 네번째 내용 입니다. -->'
+                            +'<li style="width:120px;font-size:11px;list-style-type:none;text-align:center;float:left;margin-left:22px;"> '
+                            +' <a href="'+foUrl+'" target="_blank" style="font-size:11px;text-decoration:none;" rel="noreferrer noopener"> '
+                                +' <img src="'+foImg+'" alt="'+foAlt+'" style="width:120px;height:90px;border:none" loading="lazy"> '
+                                    +'<span style="width:120px;text-align:center;margin-top:7px;font-family:dotum,Helvetica,sans-serif;font-size:11px;color:rgb(83,83,83);letter-spacing:-1px;display:block;line-height:1.5em;">'
+                                    +foContent
+                                +'</span>'
+                            +' </a>'
+                        +' </li>'
+                        +'</ul> '
+                        +' </div> '
+                    +' </div> '
+                    +' </div> </td></tr></tbody> '
+                +'</table>'
+                +'</body>'
+                +'</html>';
+
+    $('#resultHtml').html(str);
+    }
+
+// 출력된 html 복사하기
+function copyText() {
+    var resultHtml = $("#resultHtml").val();
+
+    if(resultHtml.trim().length==0){
+        alert('출력하기를 눌러주세요');
+
+        return
+    }else{
+        var copyText = $("#resultHtml");
+        copyText.select();
+        document.execCommand("copy");
+        
+        alert("복사 되었습니다.");
+    }
+ 
+}
+
+</script>
+</body>
+
+</html>
